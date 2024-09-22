@@ -1,22 +1,18 @@
-/**
- * @abstract
- * @class Analytics
- * @constructor
- */
 class Analytics {
-  private _id: string;
-  /**
-   * Analytics constructor
-   * @param {string} id - User id
-   */
-  constructor(id: string) {
+  private _id: string = "";
+
+  constructor() {
     if (this.constructor === Analytics) {
       throw new Error("Analytics is abstract class. cant be instantiate!");
     }
-    this._id = id;
   }
+
   getId() {
     return this._id;
+  }
+
+  setId(id: string) {
+    this._id = id;
   }
 
   /** @abstract */
@@ -27,48 +23,33 @@ class Analytics {
   }
 }
 
-/**
- * @class BaseAnalytics
- * @extends {Analytics}
- */
 export class BaseAnalytics extends Analytics {
-  /**
-   * Analytics constructor
-   * @param {string} id - User id
-   */
-  constructor(id: string) {
-    super(id);
+  static _instance: BaseAnalytics | null = null;
+
+  constructor() {
+    super();
   }
   send() {
     console.log(`log ${this.getId()} into local storage`);
   }
 }
 
-/**
- * @class AnalyticsDecorator
- * @constructor
- * @extends {Analytics}
- */
 class AnalyticsDecorator extends Analytics {
-  analytics: Analytics;
-  /**
-   *
-   * @param {Analytics} analytics - any analytics class
-   */
+  private _baseAnalytics: Analytics;
   constructor(analytics: Analytics) {
-    super(analytics.getId());
-    this.analytics = analytics;
+    super();
+    this._baseAnalytics = analytics;
   }
+
+  getId() {
+    return this._baseAnalytics.getId();
+  }
+
   send() {
-    this.analytics.send();
+    this._baseAnalytics.send();
   }
 }
 
-/**
- * @class GoogleAnalytics
- * @constructor
- * @extends {AnalyticsDecorator}
- */
 export class GoogleAnalytics extends AnalyticsDecorator {
   constructor(analytics: Analytics) {
     super(analytics);
@@ -79,11 +60,6 @@ export class GoogleAnalytics extends AnalyticsDecorator {
   }
 }
 
-/**
- * @class FacebookAnalytics
- * @constructor
- * @extends {AnalyticsDecorator}
- */
 export class FacebookAnalytics extends AnalyticsDecorator {
   constructor(analytics: Analytics) {
     super(analytics);
