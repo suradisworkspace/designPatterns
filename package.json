@@ -4,6 +4,8 @@
   "description": "my design pattern example",
   "main": "index.js",
   "scripts": {
+    "creational-singleton": "ts-node patterns/creational/singleton",
+    "structural-decorator": "ts-node patterns/structural/decorator",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^22.5.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5.6.2"
   }
 }
