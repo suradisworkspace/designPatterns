@@ -1,16 +1,10 @@
 class Logger {
   private static _instance: Logger | null = null;
   messages: string[] = [];
-  private id: null | string = null;
-  constructor(id?: string) {
+  private _id: null | string = null;
+  constructor() {
     if (Logger._instance) {
-      if (id) {
-        Logger._instance.id = id;
-      }
       return Logger._instance;
-    }
-    if (id) {
-      this.id = id;
     }
     Logger._instance = this;
   }
@@ -20,7 +14,11 @@ class Logger {
   }
 
   getId() {
-    return this.id;
+    return this._id;
+  }
+
+  setId(id: string) {
+    this._id = id;
   }
 
   getMessages() {

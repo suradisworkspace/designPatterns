@@ -1,13 +1,17 @@
 import Logger from "./Logger";
 
-const Logger1 = new Logger("guest");
-console.log('init logger1 with: new Logger("guest")');
+const Logger1 = new Logger();
+console.log("init logger1");
+Logger1.setId("Guest");
+console.log("logger1: set id -> Guest");
 console.log("logger1: id -> ", Logger1.getId());
 Logger1.log("log from logger1");
 console.log("logger1: log -> log from logger1");
 console.log("logger1: message list ->", Logger1.getMessages());
-const Logger2 = new Logger("member");
-console.log('init logger2 with: new Logger("member")');
+const Logger2 = new Logger();
+console.log("init logger2");
+Logger1.setId("Member");
+console.log("logger2: set id -> Member");
 console.log("logger1: id -> ", Logger1.getId());
 console.log("logger2: id -> ", Logger2.getId());
 Logger2.log("log from logger2");
