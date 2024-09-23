@@ -7,6 +7,7 @@
     "creational-singleton": "ts-node patterns/creational/singleton",
     "structural-decorator": "ts-node patterns/structural/decorator",
     "behavioral-chainOfResponsibility": "ts-node patterns/behavioral/chainOfResponsibility",
+    "behavioral-mediator": "ts-node patterns/behavioral/mediator",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
