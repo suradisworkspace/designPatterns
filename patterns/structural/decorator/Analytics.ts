@@ -24,8 +24,6 @@ class Analytics {
 }
 
 export class BaseAnalytics extends Analytics {
-  static _instance: BaseAnalytics | null = null;
-
   constructor() {
     super();
   }
